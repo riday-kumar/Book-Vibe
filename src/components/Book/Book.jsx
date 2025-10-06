@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const Book = ({ data }) => {
   return (
     <Link to={`/bookDetails/${data.bookId}`}>
-      <div className="card bg-base-100 shadow-sm">
+      <div className="card bg-base-100 shadow-sm mb-2">
         <figure className="py-7 m-3 bg-[#f3f3f3]">
           <img className="w-32 h-48 rounded-xl" src={data.image} alt="" />
         </figure>

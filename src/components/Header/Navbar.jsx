@@ -1,21 +1,22 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <a href="">Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a href="">Listed Books</a>
+        <Link to="/readlist">Read List</Link>
       </li>
       <li>
-        <a href="">Pages to Read</a>
+        <Link to="/wishlist">Wish List</Link>
       </li>
     </>
   );
   return (
-    <nav className="py-3 border-2 border-red-200">
+    <nav className="pt-2">
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">

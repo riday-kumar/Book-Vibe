@@ -1,5 +1,11 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoredDB } from "../../Utility/AddToDB";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { addToWishList } from "../../Utility/AddtoWishList";
+
+const MySwal = withReactContent(Swal);
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -9,7 +15,22 @@ const BookDetails = () => {
   const findBook = getAllBooks.find(
     (singleBook) => singleBook.bookId === Number(id)
   );
-  console.log(findBook);
+  // console.log(findBook);
+
+  const handleMarkAsRead = (id) => {
+    // store with id
+    // where to store
+    // array or collection
+    // if book is exists, show a alert
+    // if book not exist then push in the collection or array
+
+    addToStoredDB(id);
+  };
+
+  const handleWishList = (id) => {
+    addToWishList(id);
+  };
+
   return (
     <div className="grid grid-cols-2 gap-10">
       <div className="bg-gray-200 rounded-lg flex justify-center items-center">
@@ -49,8 +70,18 @@ const BookDetails = () => {
           Rating: <span className="font-bold">{findBook.rating}</span>
         </p>
         <div className="flex gap-5">
-          <button className="btn btn-info">Mark as Read</button>
-          <button className="btn btn-accent">Add to WishList</button>
+          <button
+            onClick={() => handleMarkAsRead(findBook.bookId)}
+            className="btn btn-info"
+          >
+            Mark as Read
+          </button>
+          <button
+            onClick={() => handleWishList(findBook.bookId)}
+            className="btn btn-accent"
+          >
+            Add to WishList
+          </button>
         </div>
       </div>
     </div>
